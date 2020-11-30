@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int M = 30000 + 10;
+int dp[M];
+
+int32_t main() {  
+  
+  int N;
+  cin >> N;  
+  
+  vector<pair<int, int> > times;
+  
+  for (int i = 1; i <= N; i++){
+    int start, end;
+    cin >> start >> end;
+    
+    times.push_back({start, end});
+  }
+
+  sort(times.begin(), times.end());
+
+  int ans = 0;
+
+  for (int i = 1; i <= N; i++){
+    int last = times[i-1].first - 1;
+    int maxLast = 0;
+
+    while (last > 0){
+      maxLast = max(dp[last], maxLast);
+    }
+    
+    dp[times[i-1].second] = max(maxLast + 1, dp[times[i-1].second]);
+    ans = max(ans, dp[times[i-1].second]);
+  }
+
+  cout << ans << endl;
+  
+  return 0;
+  
+}
