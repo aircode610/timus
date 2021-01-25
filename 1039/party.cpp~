@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int M = 6e3+10;
+int dp[M][2], c[M], n;
+
+int32_t main() {
+  cin >> n;
+  for (int i = 1; i <= n; i++)
+    cin >> c[i];
+  int u=1, v=1;
+  while (u != 0 && v != 0){
+    cin >> u >> v;
+    g[v].push_back(u);
+  }
+  return 0;
+}
